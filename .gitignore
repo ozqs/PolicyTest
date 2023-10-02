@@ -1,4 +1,6 @@
 PC.py
+model.pkl
+vectorizer.pkl
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

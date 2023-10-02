@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer  
 from sklearn.linear_model import LogisticRegression  
 from sklearn.model_selection import train_test_split  
-from sklearn.externals import joblib  
+import joblib  
   
 # 假设你已经训练好了一个模型，命名为 model  
 # joblib.dump(model, 'model.pkl')
@@ -16,7 +16,8 @@ answers = data['答案']
   
 # 将问题转换为向量形式  
 vectorizer = CountVectorizer()  
-question_vectors = vectorizer.fit_transform(questions)  
+question_vectors = vectorizer.fit_transform(questions)
+
   
 # 将答案转换为数字形式（0 或 1）  
 answer_numbers = answers.map({'错误': 0, '正确': 1})  
@@ -30,6 +31,7 @@ model.fit(X_train, y_train)
 
 # 保存！
 joblib.dump(model, 'model.pkl')
+joblib.dump(vectorizer, 'vectorizer.pkl')
 
 
 # 测试模型在测试集上的准确率  

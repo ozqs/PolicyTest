@@ -1,12 +1,12 @@
-from sklearn.externals import joblib  
+import joblib  
 from pathlib import Path
 from sklearn.feature_extraction.text import CountVectorizer  
   
-NAME = '问题.txt'
+PathToQuestions = '问题.txt'
 
-vectorizer = CountVectorizer()
+vectorizer = joblib.load('vectorizer.pkl')
 model = joblib.load('model.pkl')
-questions = Path(NAME).read_text().rstrip().splitlines()
+questions = Path(PathToQuestions).read_text(encoding='utf-8').rstrip().splitlines()
 
 if __name__ == '__main__':
     for question in questions:
