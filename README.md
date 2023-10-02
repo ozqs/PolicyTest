@@ -8,3 +8,12 @@
 欢迎 **Pull Requests!**
 
 会不断改进模型，增加数据！
+
+# 整理一下要安装的 python 包
+```
+joblib
+// requests
+// beautifulsoup4
+scikit-learn
+pandas
+```
