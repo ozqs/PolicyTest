@@ -7,16 +7,14 @@ from sklearn.model_selection import train_test_split
 data = pd.read_csv('politics_questions.csv')  
   
 # 将问题和答案分开  
-questions = data['question']  
-answers = data['answer']  
-print(questions, answers)
+questions = data['问题']  
+answers = data['答案']  
   
 # 将问题转换为向量形式  
 vectorizer = CountVectorizer()  
 question_vectors = vectorizer.fit_transform(questions)  
   
 # 将答案转换为数字形式（0 或 1）  
-# answer_numbers = answers.map({'False': 0, 'True': 1})  
 answer_numbers = answers.map({'错误': 0, '正确': 1})  
   
 # 将数据集分为训练集和测试集  
@@ -28,10 +26,10 @@ model.fit(X_train, y_train)
   
 # 测试模型在测试集上的准确率  
 accuracy = model.score(X_test, y_test)  
-print('Accuracy:', accuracy)  
+print('准确率:', str(accuracy * 100) + '%')  
   
 # 使用模型进行预测  
 example_question = '人民代表大会制度是我国的根本政治制度。'  
 example_vector = vectorizer.transform([example_question])  
 predicted_answer = model.predict(example_vector)  
-print('Predicted answer:', 'True' if predicted_answer[0] else 'False')
+print('预测答案:', 'True' if predicted_answer[0] else 'False')
